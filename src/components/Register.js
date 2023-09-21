@@ -18,7 +18,7 @@ const Register = () => {
                 registerPassword,
                 );
                 console.log(userInfo)
-                history.push('/')
+                history.push('/user/gallery')
             }catch (error) {
                 console.log(error.message);
             }
