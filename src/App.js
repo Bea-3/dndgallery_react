@@ -6,7 +6,6 @@ import Login from "./components/Login";
 import Gallery from "./components/Gallery";
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import Register from "./components/Register";
-import { auth } from "./firebase-config";
 import PrivateRoute from "./components/PrivateRoute";
 
 function App() {

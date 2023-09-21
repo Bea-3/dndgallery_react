@@ -1,16 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import DndPic from "./DndPic";
 import { useDrop } from "react-dnd";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase-config";
-import Login from "./Login";
 
 const Gallery = () => {
-  // track logged in user 
   const [user, setUser] = useState({});
-  onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser)
-  });
+  
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+
+    // Cleanup the listener when the component unmounts
+    return () => unsubscribe();
+  }, []); // Empty dependency array
 
   const PictureList = [
     {
@@ -47,13 +51,11 @@ const Gallery = () => {
     // console.log(id)
     const picsList = PictureList.filter((pic) => id === pic.id);
     setDropbox((dropbox) => [...dropbox, picsList[0]]);
-    // below is used to replace the image dropped.
-    // setDropbox([picsList[0]]);
+    
   };
 
   // search filter fxn
   const [searchbox, setSearchbox ] = useState('');
-  const [isPending, setIsPending] = useState(false);
 
 
   const handleChange = (e) => {
@@ -88,21 +90,7 @@ const Gallery = () => {
             </form>
           <div className="imgs">
             {result}
-            {/* { PictureList.filter((pic) => {
-                return searchbox.toLowerCase() === '' ? pic : pic.alt.toLowerCase().includes(searchbox);
-            }).map((pic) => {
-                return (
-                  <DndPic url={pic.url} id={pic.id} key={pic.id} alt={pic.alt} />
-                );
-              }) } */}
-            {/* {PictureList.map((pic) => {
-              return (
-                <DndPic url={pic.url} id={pic.id} key={pic.id} alt={pic.alt} />
-              );
-            })} */}
-
-            {/* <img src={require("../images/beach.png")}/> */}
-            {/* <img src="./images/beach.png" /> */}
+            
           </div>
         </div>
         <div className="drop-box">

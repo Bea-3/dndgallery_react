@@ -182,10 +182,13 @@
   min-height: 30vh;
   width:45%;
   position: relative;
-  border: 1px solid yellow;
+  border-radius: 15px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  padding:10px;
 }
 .drop-box{
   width:45%;
+  text-align: center;
   /* border: 1px solid blue; */
 }
 .chosen-pic{
@@ -193,7 +196,7 @@
   min-width: 100px;
   margin-top: 20px;
   padding:20px;
-  border: 1px solid plum;
+  box-shadow: 5px 5px 10px rgba(26, 21, 21, 0.5);
 }
 .user-img{
   display:grid;

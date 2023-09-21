@@ -14,7 +14,7 @@ const DndPic = ({ id, url }) => {
 
     return ( 
         
-        <img src={url} ref = {drag} style={myImageStyle} className={'imgmedia'}/>
+        <img src={url} ref = {drag} style={myImageStyle} className={'imgmedia'} alt=""/>
     )
 }
  

@@ -1,16 +1,26 @@
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import { useState } from "react";
+import { useState , useEffect} from "react";
 import { auth } from "../firebase-config";
 import { signOut, onAuthStateChanged } from "firebase/auth";
 
 const Navbar = () => {
   const history = useHistory();
+  const [user, setUser] = useState(null); // Initialize user as null
 
-  const [user, setUser] = useState({});
-  onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser)
-  });
+  useEffect(() => {
+    // Listen for changes in authentication state only once when the component mounts
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+
+    // Cleanup the listener when the component unmounts
+    return () => {
+      if (unsubscribe) {
+        unsubscribe();
+      }
+    };
+  }, []); // Empty dependency array to ensure the effect runs only once
 
   // logout
   const logout = async () => {
