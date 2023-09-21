@@ -12,6 +12,7 @@ const Login = () => {
     const history = useHistory();
 
     const [user, setUser] = useState(null); // Initialize user state as null
+    console.log(user)
     // // track logged in user 
     // const [user, setUser] = useState({});
     // onAuthStateChanged(auth, (currentUser) => {

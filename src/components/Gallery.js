@@ -6,7 +6,7 @@ import { auth } from "../firebase-config";
 
 const Gallery = () => {
   const [user, setUser] = useState({});
-  
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -44,38 +44,38 @@ const Gallery = () => {
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
     }),
-  }));
+  }));console.log(isOver)
 
   const addImageToDropbox = (id) => {
     // check if we are actually dragging
     // console.log(id)
     const picsList = PictureList.filter((pic) => id === pic.id);
     setDropbox((dropbox) => [...dropbox, picsList[0]]);
-    
   };
 
   // search filter fxn
-  const [searchbox, setSearchbox ] = useState('');
-
+  const [searchbox, setSearchbox] = useState("");
 
   const handleChange = (e) => {
-    setSearchbox(e.target.value)
-  }
+    setSearchbox(e.target.value);
+  };
 
   const filteredPictures = PictureList.filter((pic) => {
-    return searchbox.toLowerCase() === '' ? true : pic.alt.toLowerCase().includes(searchbox);
+    return searchbox.toLowerCase() === ""
+      ? true
+      : pic.alt.toLowerCase().includes(searchbox);
   });
 
   const pictureElements = filteredPictures.map((pic) => {
-    return (
-      <DndPic url={pic.url} id={pic.id} key={pic.id} alt={pic.alt} />
-    );
+    return <DndPic url={pic.url} id={pic.id} key={pic.id} alt={pic.alt} />;
   });
 
-  const result = filteredPictures.length === 0 ? (
-    <p>Image not available</p>
-  ) : pictureElements;
-
+  const result =
+    filteredPictures.length === 0 ? (
+      <p>Image not available</p>
+    ) : (
+      pictureElements
+    );
 
   return (
     <div className="gallery-main">
@@ -85,13 +85,14 @@ const Gallery = () => {
       </div>
       <div className="dnd-img">
         <div className="all-images">
-            <form className="search"> 
-                <input type="search" placeholder ="type forest or island or mountain" onChange={handleChange}/>
-            </form>
-          <div className="imgs">
-            {result}
-            
-          </div>
+          <form className="search">
+            <input
+              type="search"
+              placeholder="type forest or island or mountain"
+              onChange={handleChange}
+            />
+          </form>
+          <div className="imgs">{result}</div>
         </div>
         <div className="drop-box">
           <p>Your Selections: </p>
