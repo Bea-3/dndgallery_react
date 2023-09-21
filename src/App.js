@@ -1,24 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import { DndProvider } from "react-dnd";
+import Navbar from "./components/Navbar";
+import Home from "./components/Home";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Login from "./components/Login";
+import Gallery from "./components/Gallery";
+import { HTML5Backend } from 'react-dnd-html5-backend';
+import Register from "./components/Register";
+import { auth } from "./firebase-config";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <DndProvider backend={HTML5Backend}>
+      <Router>
+        <div className="App">
+          <Navbar />
+          <div className="content">
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route path="/login">
+                <Login />
+              </Route>
+              <PrivateRoute path="/user/gallery" component={Gallery} />
+              <Route path="/register">
+                <Register />
+              </Route>
+            </Switch>
+          </div>
+        </div>
+      </Router>
+    </DndProvider>
   );
 }
 

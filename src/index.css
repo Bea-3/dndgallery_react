@@ -1,13 +1,234 @@
-body {
+/* base styles */
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: #333;
+}
+.navbar {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-bottom: 1px solid #f2f2f2;
+}
+.navbar h1 {
+  color: #754668;
+}
+.navbar .links {
+  margin-left: auto;
+}
+.navbar a {
+  margin-left: 16px;
+  text-decoration: none;
+  padding: 6px;
+}
+.navbar a:hover {
+  color: #f9eccc;
+}
+.login-link {
+  color: white;
+  background-color: #754668;
+  border-radius: 8px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Home page styles */
+.home{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: space-evenly;
+}
+.welcome {
+  width: 40%;
+  min-height: 40vh;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  justify-content: space-around;
+}
+.welcome h1,
+.welcome p {
+  margin: 20px 0;
+}
+
+.grid-wrapper {
+  width: 50%;
+  min-height: 30vh;
+  /* border: 1px solid pink; */
+}
+.home-pic{
+  background-image: url('./images/autumn.jpg');
+  border-radius: 6px;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 50vh;
+}
+
+/* Grid Styles on the Homepage */
+.pics {
+  /* border: 1px solid green; */
+  height: 250px;
+  width: 350px;
+}
+
+/* Login form */
+.login-form {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid #f2f2f2;
+  border-radius: 6px;
+}
+.login-form label {
+  text-align: left;
+  display: block;
+}
+.login-form h2 {
+  font-size: 20px;
+  color: #754668;
+  margin-bottom: 30px;
+}
+.login-form input {
+  width: 100%;
+  padding: 6px 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  display: block;
+}
+.login-form button {
+  background: #754668;
+  color: #fff;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.login-form p{
+  margin-top: 20px;
+  text-align: left;
+}
+
+/* register form */
+.register-form{
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid #f2f2f2;
+  border-radius: 6px;
+}
+.register-form label {
+  text-align: left;
+  display: block;
+}
+.register-form h2 {
+  font-size: 20px;
+  color: #754668;
+  margin-bottom: 30px;
+}
+.register-form input {
+  width: 100%;
+  padding: 6px 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  display: block;
+}
+.register-form button {
+  background: #754668;
+  color: #fff;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Gallery page styles */
+.gallery-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  /* border: 1px solid red; */
+}
+.gallery-para {
+  display:flex;
+  flex-wrap: wrap;
+  /* border: 1px solid greenyellow; */
+
+}
+.gallery-para h3, .gallery-para p{
+  width: 100%;
+  margin:10px 0;
+}
+
+.dnd-img {
+  /* border: 1px solid brown; */
+  min-height: 50vh;
+  min-width: 300px;
+  padding:5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  
+}
+.all-images{
+  min-height: 30vh;
+  width:45%;
+  position: relative;
+  border: 1px solid yellow;
+}
+.drop-box{
+  width:45%;
+  /* border: 1px solid blue; */
+}
+.chosen-pic{
+  border-radius: 15px;
+  min-width: 100px;
+  margin-top: 20px;
+  padding:20px;
+  border: 1px solid plum;
+}
+.user-img{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap:10px;
+  min-height:30vh;  
+}
+
+.imgs{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap:10px;
+  cursor: move;
+}
+
+/* search styles */
+.search{
+  width: 100%;
+  display: inline-flex;
+}
+.search input{
+  width: 100%;
+}
+
+.search input, .search button{
+  padding: 5px;
+  margin: 10px 0;
+}
+
+/* Media Queries */
+@media (max-width: 768px){
+  .dnd-img {
+    display:block;
+  }
+  .all-images, .drop-box{
+    width:100%;
+  }
 }
